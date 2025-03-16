@@ -369,7 +369,25 @@ see the tlp.conf file for more details and final configuration. then...
 
 These settings will provide optimal performance when plugged in while maximizing battery life when unplugged, properly leveraging the i9-13900H's hybrid architecture and managing the dual GPUs effectively.
 
+### 2. NVIDIA/Intel GPU Management (High Impact)
+Your `optimus-manager` setup requires manual switching between GPUs.
 
+```bash
+# Install auto-switching tool
+sudo pacman -S envycontrol
+
+# Set hybrid mode with on-demand NVIDIA activation
+sudo envycontrol --switch hybrid
+
+# Create a script to run specific apps with NVIDIA
+cat > ~/.local/bin/nvidia-run << 'EOF'
+#!/bin/bash
+__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"
+EOF
+chmod +x ~/.local/bin/nvidia-run
+```
+
+**Benefit**: 2-3 hour battery life improvement while maintaining GPU availability.
 
 # SSD TRIM (fstrim) Configuration
 
