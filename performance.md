@@ -19,12 +19,11 @@
     * `yay`
     * NVIDIA drivers
 
+* **Ghostty/Zsh:**
+    * `.zshrc`: cleanup, sdkman, aliases
+    * Ghostty: appearance, keybindings, tmux
+
 ## To Do
-* **Looks:**
-    * GNOME extensions: dash-to-panel, arcmenu, blur, just perfection, maybe material shell
-    * Themes/icons: GNOME Look, AUR
-    * Ghostty: powerline, colors, zsh plugins
-    * Wallpapers
 * **Dev:**
     * Podman: `pacman -S podman`, rootless?
     * Tools: `pacman -S git vim tmux neovim htop exa bat ripgrep fd-find`
@@ -32,9 +31,7 @@
     * Zsh plugins: autosuggest, syntax-highlighting
     * Virtualization: virtualbox/kvm
 
-* **Ghostty/Zsh:**
-    * `.zshrc`: cleanup, sdkman, aliases
-    * Ghostty: appearance, keybindings, tmux
+
 
 ## Ghostty/Zsh quick config notes
 
@@ -471,3 +468,45 @@ This section documents the custom commands I've added to my Topgrade configurati
         * Iterates through the models and pulls the latest updates.
         * Provides output for each model update attempt, with error reporting.
         * Confirms when all models have been processed.
+
+
+## Ghostty Configuration Update
+
+This section details an updated Ghostty configuration, focusing on font settings, appearance, and behavior.
+
+**Configuration:**
+
+```toml
+# Font Settings
+font-family = "FantasqueSansM Nerd Font"
+font-size = 11
+font-feature = "-calt, -liga, -dlig"
+font-synthetic-style = true
+
+# Appearance
+theme = "light:rose-pine-dawn,dark:Tomorrow Night Blue"
+background-opacity = 0.95
+background-blur = false
+cursor-style = "block"
+cursor-style-blink = false
+cursor-opacity = 1.0
+
+# Behavior
+command = "zsh"
+scrollback-limit = 4194304
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 1.0
+
+# Adjustments (Optional, adjust as needed)
+adjust-cell-width = 0
+adjust-cell-height = 0
+adjust-font-baseline = 0
+adjust-underline-position = 0
+adjust-underline-thickness = 1
+adjust-strikethrough-position = 0
+adjust-strikethrough-thickness = 1
+adjust-overline-position = 0
+adjust-overline-thickness = 1
+adjust-cursor-thickness = 1
+adjust-cursor-height = 1
+adjust-box-thickness = 1
