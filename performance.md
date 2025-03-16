@@ -409,6 +409,15 @@ sudo sysctl -p /etc/sysctl.d/99-memory.conf
 **Benefit**: More consistent performance during memory-intensive tasks.
 
 
+### System Service Optimization
+```bash
+# Analyze and disable unnecessary services
+systemctl list-unit-files --state=enabled | grep -v systemd
+sudo systemctl mask NetworkManager-wait-online.service
+systemctl --user mask org.gnome.SettingsDaemon.Wacom.service
+```
+
+
 # SSD TRIM (fstrim) Configuration
 
 **Description:**
