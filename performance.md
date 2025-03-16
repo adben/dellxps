@@ -8,12 +8,13 @@
 * i9-13900H, Intel Iris Xe, RTX 4060 Max-Q
 * 64GB RAM, 1TB SSD
 
-## To Do
-
+## See done section for completed tasks
 * **Battery:**
     * TLP: `pacman -S tlp`, enable, config
     * Optimus: `pacman -S optimus-manager optimus-manager-qt`, intel/nvidia switch
     * `cpupower`, power settings, services, fstrim
+
+## To Do
 * **Looks:**
     * GNOME extensions: dash-to-panel, arcmenu, blur, just perfection, maybe material shell
     * Themes/icons: GNOME Look, AUR
@@ -396,3 +397,47 @@ This section details how to enable and verify the `fstrim` service, which is ess
 * The `fstrim.timer` service automates the TRIM process.
 * The error message "discard operation is not supported" on the root file system is common and often not a cause for concern.
 * If you are using BTRFS, then it is very common that you will get the "discard operation is not supported" message.
+
+# Eyecandy Customization
+
+how I've enhanced the visual appearance of my GNOME desktop:
+
+## 1. Caffeine (GNOME Extension)
+
+* **Purpose:**
+    * I use Caffeine to prevent my screen from dimming or locking during presentations or video watching.
+* **Installation:**
+    * Installed the GNOME Extensions
+    * Installed the Caffeine extension through the Extensions app.
+* **Usage:**
+    * Toggle Caffeine on/off via the system tray icon.
+
+## 2. Selected Nerd Fonts
+
+* **Purpose:**
+    * I chose specific monospace fonts for improved code readability.
+* **Recommended Fonts:**
+    * 22) Fira Code
+    * 20) EnvyCodeR
+    * 15) D2Coding
+    * 21) FantasqueSansMono
+    * 40) Lekton
+    * 36) Iosevka
+    * 9) Cascadia Code
+    * 39) JetBrains Mono
+    * 27) Hack
+* **Installation:**
+    * Installed the fonts via: `getnf`
+    * **Usage:**
+    * Set the fonts in my terminal and code editor settings.
+
+## 3. Dash to Panel (GNOME Extension)
+
+* **Purpose:**
+    * I use Dash to Panel to combine the GNOME Dash and top panel.
+* **Installation:**
+    * Installed the GNOME Extensions
+    * Installed Dash to Panel through the Extensions app.
+* **Usage:**
+    * The Dash and top panel are now combined.
+    * Configured settings via the Extensions app.
