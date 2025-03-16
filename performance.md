@@ -13,6 +13,11 @@
     * TLP: `pacman -S tlp`, enable, config
     * Optimus: `pacman -S optimus-manager optimus-manager-qt`, intel/nvidia switch
     * `cpupower`, power settings, services, fstrim
+* **Maintain:**
+    * Topgrade
+    * Timeshift: `pacman -S timeshift`, setup
+    * `yay`
+    * NVIDIA drivers
 
 ## To Do
 * **Looks:**
@@ -26,11 +31,7 @@
     * SDKMAN: check install, path
     * Zsh plugins: autosuggest, syntax-highlighting
     * Virtualization: virtualbox/kvm
-* **Maintain:**
-    * Topgrade
-    * Timeshift: `pacman -S timeshift`, setup
-    * `yay`
-    * NVIDIA drivers
+
 * **Ghostty/Zsh:**
     * `.zshrc`: cleanup, sdkman, aliases
     * Ghostty: appearance, keybindings, tmux
@@ -441,3 +442,32 @@ how I've enhanced the visual appearance of my GNOME desktop:
 * **Usage:**
     * The Dash and top panel are now combined.
     * Configured settings via the Extensions app.
+
+
+# Topgrade Custom Commands
+
+This section documents the custom commands I've added to my Topgrade configuration for streamlined system maintenance.
+
+## Ollama Updates
+
+* **"Update Ollama"**:
+    * Purpose: Automatically checks for and updates Ollama to the latest version.
+    * Command:
+        ```bash
+        bash -c 'current=$(ollama --version 2>&1 | grep -oP "\\d+\\.\\d+\\.\\d+"); latest=$(curl -s [https://api.github.com/repos/ollama/ollama/releases/latest](https://api.github.com/repos/ollama/ollama/releases/latest) | grep -oP "\\"tag_name\\":\\s*\\"v\\K[0-9.]+"); if [[ "$current" != "$latest" ]]; then echo "Upgrading Ollama from $current to $latest"; curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh; else echo "Ollama $current is already the latest version"; fi'
+        ```
+    * Functionality:
+        * Retrieves the current and latest Ollama versions.
+        * Compares the versions and performs an update if necessary.
+        * Provides informative output about the update process.
+* **"Update Ollama Models"**:
+    * Purpose: Automatically updates all locally installed Ollama models.
+    * Command:
+        ```bash
+        ollama list 2>/dev/null | awk 'NR>1 {print $1}' | xargs -I {} sh -c 'echo "Updating model: {}"; ollama pull {} || echo "Failed to update {}"; echo "--"' && echo "All models updated."
+        ```
+    * Functionality:
+        * Lists all installed Ollama models.
+        * Iterates through the models and pulls the latest updates.
+        * Provides output for each model update attempt, with error reporting.
+        * Confirms when all models have been processed.
