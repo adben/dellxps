@@ -389,6 +389,26 @@ chmod +x ~/.local/bin/nvidia-run
 
 **Benefit**: 2-3 hour battery life improvement while maintaining GPU availability.
 
+
+### Memory Management (Medium Impact)
+Despite 64GB RAM, adding swap can improve system responsiveness under memory pressure:
+
+```bash
+# Create a 16GB swap file
+sudo dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Optimize swappiness for large RAM
+echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.d/99-memory.conf
+sudo sysctl -p /etc/sysctl.d/99-memory.conf
+```
+
+**Benefit**: More consistent performance during memory-intensive tasks.
+
+
 # SSD TRIM (fstrim) Configuration
 
 **Description:**
