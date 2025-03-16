@@ -1,0 +1,203 @@
+inxi -Fxzma
+-F: Full system information. This includes:
+
+    System (motherboard, BIOS)
+    CPU
+    Memory
+    Graphics
+    Audio
+    Network
+    Drives
+
+-x: Extra data. This adds information about:
+
+    Clockspeeds of the CPU
+    RAID data (if applicable)
+
+-z: Filters out sensitive data like MAC addresses and serial numbers.
+-m: Adds full memory (RAM) information.
+-a: full drive/partition information.
+
+
+System:
+  Kernel: 6.12.17-1-MANJARO arch: x86_64 bits: 64 compiler: gcc v: 14.2.1
+    clocksource: tsc avail: acpi_pm
+    parameters: BOOT_IMAGE=/boot/vmlinuz-6.12-x86_64
+    root=UUID=9528931f-ab51-46ed-b8b3-d00e691d14ea rw quiet
+    cryptdevice=UUID=0efd499e-4e58-4ade-8dec-7d2f3fd0620d:luks-0efd499e-4e58-4ade-8dec-7d2f3fd0620d
+    root=/dev/mapper/luks-0efd499e-4e58-4ade-8dec-7d2f3fd0620d splash
+    apparmor=1 security=apparmor udev.log_priority=3
+  Desktop: GNOME v: 47.4 tk: GTK v: 3.24.48 wm: gnome-shell
+    tools: gsd-screensaver-proxy dm: GDM v: 47.0 Distro: Manjaro
+    base: Arch Linux
+Machine:
+  Type: Laptop System: Dell product: XPS 15 9530 v: N/A
+    serial: <superuser required> Chassis: type: 10 serial: <superuser required>
+  Mobo: Dell model: 09J5GK v: A00 serial: <superuser required> part-nu: 0BEB
+    uuid: <superuser required> UEFI: Dell v: 1.18.0 date: 11/11/2024
+Battery:
+  ID-1: BAT0 charge: 64.0 Wh (100.0%) condition: 64.0/84.3 Wh (75.9%)
+    volts: 12.8 min: 11.4 model: SMP DELL 70N2F35 type: Li-poly serial: <filter>
+    status: not charging cycles: 239
+  Device-1: hid-10:94:bb:aa:dc:63-battery model: Adolfo Trackpad 2
+    serial: N/A charge: N/A status: discharging
+Memory:
+  System RAM: total: 64 GiB available: 62.47 GiB used: 9.15 GiB (14.6%)
+  Message: For most reliable report, use superuser + dmidecode.
+  Array-1: capacity: 64 GiB slots: 2 modules: 2 EC: None
+    max-module-size: 32 GiB note: est.
+  Device-1: DIMM A type: DDR5 detail: synchronous size: 32 GiB
+    speed: 4800 MT/s volts: curr: 1 width (bits): data: 64 total: 64
+    manufacturer: 80AD000080AD part-no: HMCG88MEBSA092N serial: <filter>
+  Device-2: DIMM B type: DDR5 detail: synchronous size: 32 GiB
+    speed: 4800 MT/s volts: curr: 1 width (bits): data: 64 total: 64
+    manufacturer: 80AD000080AD part-no: HMCG88MEBSA092N serial: <filter>
+CPU:
+  Info: model: 13th Gen Intel Core i9-13900H bits: 64 type: MST AMCP
+    arch: Raptor Lake gen: core 13 level: v3 note: check built: 2022+
+    process: Intel 7 (10nm) family: 6 model-id: 0xBA (186) stepping: 2
+    microcode: 0x4124
+  Topology: cpus: 1x dies: 1 clusters: 8 cores: 14 threads: 20 mt: 6 tpc: 2
+    st: 8 smt: enabled cache: L1: 1.2 MiB desc: d-8x32 KiB, 6x48 KiB; i-6x32
+    KiB, 8x64 KiB L2: 11.5 MiB desc: 6x1.2 MiB, 2x2 MiB L3: 24 MiB
+    desc: 1x24 MiB
+  Speed (MHz): avg: 400 min/max: 400/5200:5400:4100 scaling:
+    driver: intel_pstate governor: performance cores: 1: 400 2: 400 3: 400
+    4: 400 5: 400 6: 400 7: 400 8: 400 9: 400 10: 400 11: 400 12: 400 13: 400
+    14: 400 15: 400 16: 400 17: 400 18: 400 19: 400 20: 400 bogomips: 119840
+  Flags: avx avx2 ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx
+  Vulnerabilities:
+  Type: gather_data_sampling status: Not affected
+  Type: itlb_multihit status: Not affected
+  Type: l1tf status: Not affected
+  Type: mds status: Not affected
+  Type: meltdown status: Not affected
+  Type: mmio_stale_data status: Not affected
+  Type: reg_file_data_sampling mitigation: Clear Register File
+  Type: retbleed status: Not affected
+  Type: spec_rstack_overflow status: Not affected
+  Type: spec_store_bypass mitigation: Speculative Store Bypass disabled via
+    prctl
+  Type: spectre_v1 mitigation: usercopy/swapgs barriers and __user pointer
+    sanitization
+  Type: spectre_v2 mitigation: Enhanced / Automatic IBRS; IBPB:
+    conditional; RSB filling; PBRSB-eIBRS: SW sequence; BHI: BHI_DIS_S
+  Type: srbds status: Not affected
+  Type: tsx_async_abort status: Not affected
+Graphics:
+  Device-1: Intel Raptor Lake-P [Iris Xe Graphics] vendor: Dell driver: i915
+    v: kernel alternate: xe arch: Xe process: Intel 7 (10nm) built: 2022+ ports:
+    active: DP-2 off: eDP-1 empty: DP-1, DP-3, DP-4, HDMI-A-1 bus-ID: 00:02.0
+    chip-ID: 8086:a7a0 class-ID: 0300
+  Device-2: NVIDIA AD107M [GeForce RTX 4060 Max-Q / Mobile] vendor: Dell
+    driver: nvidia v: 550.144.03 alternate: nouveau,nvidia_drm
+    non-free: 550/565.xx+ status: current (as of 2025-01) arch: Lovelace
+    code: AD1xx process: TSMC n4 (5nm) built: 2022+ pcie: gen: 1
+    speed: 2.5 GT/s lanes: 8 link-max: gen: 4 speed: 16 GT/s bus-ID: 01:00.0
+    chip-ID: 10de:28a0 class-ID: 0302
+  Device-3: Microdia Integrated_Webcam_HD driver: uvcvideo type: USB
+    rev: 2.0 speed: 480 Mb/s lanes: 1 mode: 2.0 bus-ID: 3-6:3 chip-ID: 0c45:6748
+    class-ID: fe01 serial: <filter>
+  Display: wayland server: X.org v: 1.21.1.16 with: Xwayland v: 24.1.6
+    compositor: gnome-shell driver: X: loaded: modesetting,nvidia
+    unloaded: nouveau alternate: fbdev,nv,vesa dri: iris gpu: i915
+    display-ID: 0
+  Monitor-1: DP-2 model: Philips FTV serial: <filter> built: 2019
+    res: 1920x1080 dpi: 34 gamma: 1.2 size: 1440x810mm (56.69x31.89")
+    diag: 1652mm (65") ratio: 16:9 modes: max: 1920x1080 min: 640x480
+  Monitor-2: eDP-1 model: LG Display 0x06b3 built: 2021 res: 1920x1200
+    dpi: 145 gamma: 1.2 size: 336x210mm (13.23x8.27") diag: 396mm (15.6")
+    ratio: 16:10 modes: 1920x1200
+  API: EGL v: 1.5 hw: drv: intel iris drv: nvidia platforms: device: 0
+    drv: nvidia device: 1 drv: iris device: 2 drv: swrast gbm: drv: iris
+    surfaceless: drv: nvidia wayland: drv: iris x11: drv: iris
+  API: OpenGL v: 4.6.0 compat-v: 4.5 vendor: intel mesa v: 24.3.4-arch1.1
+    glx-v: 1.4 direct-render: yes renderer: Mesa Intel Iris Xe Graphics (RPL-P)
+    device-ID: 8086:a7a0 memory: 30.5 GiB unified: yes display-ID: :0.0
+  Info: Tools: api: eglinfo,glxinfo gpu: gputop, intel_gpu_top, lsgpu,
+    nvidia-settings, nvidia-smi x11: xprop,xrandr
+Audio:
+  Device-1: Intel Raptor Lake-P/U/H cAVS vendor: Dell
+    driver: sof-audio-pci-intel-tgl alternate: snd_hda_intel, snd_soc_avs,
+    snd_sof_pci_intel_tgl bus-ID: 00:1f.3 chip-ID: 8086:51ca class-ID: 0401
+  API: ALSA v: k6.12.17-1-MANJARO status: kernel-api with: aoss
+    type: oss-emulator tools: alsactl,alsamixer,amixer
+  Server-1: PipeWire v: 1.2.7 status: active with: 1: pipewire-pulse
+    status: active 2: wireplumber status: active 3: pipewire-alsa type: plugin
+    4: pw-jack type: plugin tools: pactl,pw-cat,pw-cli,wpctl
+Network:
+  Device-1: Intel Raptor Lake PCH CNVi WiFi driver: iwlwifi v: kernel
+    bus-ID: 00:14.3 chip-ID: 8086:51f1 class-ID: 0280
+  IF: wlp0s20f3 state: up mac: <filter>
+  IF-ID-1: cni0 state: up speed: 10000 Mbps duplex: unknown mac: <filter>
+  IF-ID-2: flannel.1 state: unknown speed: N/A duplex: N/A mac: <filter>
+  IF-ID-3: veth09c4c778 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-4: veth0d8d3363 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-5: veth1fc3f6d9 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-6: veth23749f70 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-7: veth44f92973 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-8: veth4bea4bca state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-9: veth62c326cc state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-10: veth66ca1857 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-11: veth8e013dd4 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-12: vetha8391113 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-13: vethc0e084f0 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-14: vethc24d6eb1 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-15: vethc96d5cbb state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-16: vethcfa40a90 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-17: vethdf527eb7 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-18: vetheac79224 state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  IF-ID-19: vethfd02f0fe state: up speed: 10000 Mbps duplex: full
+    mac: <filter>
+  Info: services: NetworkManager, nginx, systemd-timesyncd, wpa_supplicant
+Bluetooth:
+  Device-1: Intel AX211 Bluetooth driver: btusb v: 0.8 type: USB rev: 2.0
+    speed: 12 Mb/s lanes: 1 mode: 1.1 bus-ID: 3-10:5 chip-ID: 8087:0033
+    class-ID: e001
+  Report: rfkill ID: hci0 rfk-id: 0 state: up address: see --recommends
+Drives:
+  Local Storage: total: 1.84 TiB used: 939.14 GiB (49.8%)
+  SMART Message: Required tool smartctl not installed. Check --recommends
+  ID-1: /dev/nvme0n1 maj-min: 259:0 vendor: SK Hynix model: PC801 NVMe 1TB
+    size: 953.87 GiB block-size: physical: 512 B logical: 512 B speed: 63.2 Gb/s
+    lanes: 4 tech: SSD serial: <filter> fw-rev: 51003141 temp: 39.9 C
+    scheme: GPT
+  ID-2: /dev/sda maj-min: 8:0 vendor: Samsung model: PSSD T7
+    size: 931.51 GiB block-size: physical: 512 B logical: 512 B type: USB
+    rev: 3.2 spd: 5 Gb/s lanes: 1 mode: 3.2 gen-1x1 tech: SSD serial: <filter>
+    scheme: MBR
+Partition:
+  ID-1: / raw-size: 953.57 GiB size: 937.53 GiB (98.32%)
+    used: 90.12 GiB (9.6%) fs: ext4 dev: /dev/dm-0 maj-min: 254:0
+    mapped: luks-0efd499e-4e58-4ade-8dec-7d2f3fd0620d
+  ID-2: /boot/efi raw-size: 300 MiB size: 299.4 MiB (99.80%)
+    used: 464 KiB (0.2%) fs: vfat dev: /dev/nvme0n1p1 maj-min: 259:1
+Swap:
+  Alert: No swap data was found.
+Sensors:
+  System Temperatures: cpu: 62.0 C mobo: 52.0 C sodimm: SODIMM C
+  Fan Speeds (rpm): cpu: 4499 fan-2: 4316
+Info:
+  Processes: 535 Power: uptime: 6h 26m states: freeze,mem,disk suspend: s2idle
+    wakeups: 1 hibernate: platform avail: shutdown, reboot, suspend, test_resume
+    image: 24.96 GiB services: gsd-power,upowerd Init: systemd v: 257
+    default: graphical tool: systemctl
+  Packages: pm: pacman pkgs: 1460 libs: 388 tools: gnome-software,pamac,yay
+    pm: flatpak pkgs: 0 Compilers: gcc: 14.2.1 Shell: Zsh v: 5.9
+    running-in: ghostty inxi: 3.3.37

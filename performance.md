@@ -329,6 +329,46 @@ then
      sudo tlp start                               ✔  2m 42s 
 TLP started in AC mode (auto).
 ```
+see the tlp.conf file for more details and final configuration. then...
+
+1. **Apply this configuration:**
+   ```bash
+   sudo cp /path/to/this/config /etc/tlp.conf
+   sudo tlp start
+   ```
+
+2. **Create system optimization file:**
+   ```bash
+   sudo tee /etc/sysctl.d/99-performance.conf << EOF
+   # I/O and memory management optimizations
+   vm.dirty_ratio = 10
+   vm.dirty_background_ratio = 5
+   vm.vfs_cache_pressure = 50
+
+   # Network performance
+   net.core.somaxconn = 4096
+   net.ipv4.tcp_max_syn_backlog = 4096
+   net.ipv4.tcp_slow_start_after_idle = 0
+
+   # Hybrid CPU scheduler optimization
+   kernel.sched_migration_cost_ns = 5000000
+   EOF
+
+   sudo sysctl --system
+   ```
+
+~~3. **Add noatime to root filesystem in /etc/fstab:**
+    ```
+    UUID=9528931f-ab51-46ed-b8b3-d00e691d14ea / ext4 defaults,noatime 0 1
+    ```~~
+
+4. **Configure NVMe scheduler:**
+   ```bash
+   echo 'ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/scheduler}="none"' | sudo tee /etc/udev/rules.d/60-scheduler.rules
+   ```
+
+These settings will provide optimal performance when plugged in while maximizing battery life when unplugged, properly leveraging the i9-13900H's hybrid architecture and managing the dual GPUs effectively.
+
 
 
 # SSD TRIM (fstrim) Configuration
