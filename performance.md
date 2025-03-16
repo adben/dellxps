@@ -330,3 +330,69 @@ then
      sudo tlp start                               ✔  2m 42s 
 TLP started in AC mode (auto).
 ```
+
+
+# SSD TRIM (fstrim) Configuration
+
+**Description:**
+
+This section details how to enable and verify the `fstrim` service, which is essential for maintaining SSD performance and longevity.
+
+**Steps:**
+
+1.  **Enable `fstrim.timer`:**
+    * Open a terminal.
+    * Run the following command to enable the `fstrim.timer` service:
+        ```bash
+        sudo systemctl enable fstrim.timer
+        ```
+    * This command configures the system to automatically run `fstrim` weekly.
+
+2.  **Verify `fstrim.timer` Status:**
+    * To check the status of the `fstrim.timer` service, run:
+        ```bash
+        systemctl status fstrim.timer
+        ```
+    * This command will display information about the service, including its current status, when it will run next, and any related logs.
+    * Example output:
+        ```
+        ● fstrim.timer - Discard unused filesystem blocks once a week
+            Loaded: loaded (/usr/lib/systemd/system/fstrim.timer; enabled; preset: disabled)
+            Active: active (waiting) since Sun 2025-03-16 12:36:41 CET; 7min ago
+        Invocation: 22ca00219db94f8caa42fb29cf65c85f
+            Trigger: Mon 2025-03-17 00:17:37 CET; 11h left
+        Triggers: ● fstrim.service
+            Docs: man:fstrim
+
+        mrt 16 12:36:41 adolfo-xps159530 systemd[1]: Started Discard unused filesystem blocks once a week.
+        ```
+    * The "Active: active (waiting)" status indicates that the timer is enabled and waiting for its scheduled execution.
+
+3.  **Manual `fstrim` Execution (Optional):**
+    * You can manually run `fstrim` to immediately discard unused blocks.
+    * Run:
+        ```bash
+        sudo fstrim -av
+        ```
+    * This command will TRIM all mounted filesystems that support the operation.
+    * Example output:
+        ```
+        /boot/efi: 298,9 MiB (313466880 bytes) trimmed on /dev/nvme0n1p1
+        fstrim: /: the discard operation is not supported
+        ```
+
+**Troubleshooting:**
+
+* **"fstrim: /: the discard operation is not supported" Error:**
+    * This error message indicates that the root filesystem (`/`) does not support the discard operation.
+    * This typically occurs when the filesystem is not mounted with the `discard` option or when the underlying storage does not support TRIM.
+    * In most cases, this error can be safely ignored, as the `/boot/efi` partition (and any other supported partitions) will still be trimmed.
+    * If you are using BTRFS, it is very common that trim is not supported.
+    * If you wish to enable discard on the root filesystem, you will need to edit your `/etc/fstab` file, and add the discard option to the mount options. This is not recommended, as it can cause performance issues.
+
+**Important Notes:**
+
+* `fstrim` is essential for maintaining SSD performance.
+* The `fstrim.timer` service automates the TRIM process.
+* The error message "discard operation is not supported" on the root file system is common and often not a cause for concern.
+* If you are using BTRFS, then it is very common that you will get the "discard operation is not supported" message.
